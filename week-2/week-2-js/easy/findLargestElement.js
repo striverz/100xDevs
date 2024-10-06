@@ -6,6 +6,15 @@
 */
 
 function findLargestElement(numbers) {
+    if(numbers.length===0) return undefined;
+
+    let num=-1e7;
+    for(ele of numbers){
+        if(ele>num){
+            num=ele;
+        }
+    }
+    return num;
     
 }
 
