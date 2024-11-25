@@ -6,6 +6,20 @@
 */
 
 function findLargestElement(numbers) {
+    if(numbers.length===0) return undefined;
+
+    const ans=numbers.reduce(function(acc,cur){
+        if(cur>acc){
+            acc=cur;
+        }
+        return acc;
+
+    },-1e9);
+
+    console.log(ans);
+
+    return ans;
+
     
 }
 
