@@ -1,0 +1,147 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color:#151515;
+    color: #fff;
+}
+
+main{
+    padding: 0px 20px;
+    
+}
+header{
+    margin: 5px 0px;
+   
+    display: flex;
+    justify-content:space-between;
+    padding: 5px 10px;
+    align-items: center;
+    flex-wrap: wrap;
+    
+}
+.logo-div{
+    display: flex;
+    align-items: center;
+}
+.logo-div >img{
+    width: 30px;
+    height: 30px;
+    margin: 5px;
+}
+header>ul{
+    display: flex;
+    flex-wrap: wrap;
+
+}
+header>ul>li{
+    list-style-type: none;
+    margin-left:30px;
+    font-weight: 600;
+    color: #c4c4c4;
+    cursor: pointer;
+    
+}
+.input-div{
+    margin-left: 20px;
+}
+.input-div>input,button{
+    padding: 6px 10px;
+    border-radius: 5px;
+    margin: 0px 5px;
+}
+.input-div>input{
+    border: solid 1px rgb(67, 67, 67);
+}
+.input-div>button{
+    border: none;
+    background-color: rgb(10, 101, 220);
+}
+
+
+.boger{
+    border: solid white 1px;
+    height: 2px;
+    width: 20px;
+    margin: 3px;
+    display: none;
+    
+}
+
+@media(max-width:800px){
+    header>ul{
+        display: none;
+    }
+    .input-div{
+        display: none;
+    }
+    .boger{
+        display: block;
+    }
+    header{
+        justify-content: space-between;
+    }
+
+}
+
+@media(max-width:1110px){
+    .input-div{
+        display: none;
+    }
+}
+
+.hero{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 6%;
+   
+}
+.inner-hero{
+    width: 500px;
+   
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px;
+}
+.inner-hero>div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+   
+}
+.inner-hero>div>button{
+    margin: 5px;
+}
+
+.inner-hero>h1{
+    font-size: 50px;
+    text-align: center;
+    padding: 10px;
+}
+.hero-btns{
+    padding:15px 10px;
+    font-size: 18px;
+    border: solid white 1px;
+    
+    
+}
+
+.imp-div{
+    margin-top: 30px;
+    
+}
+
+.imp-img{
+    width: 100%;
+    border-radius: 10px;
+    
+}
+.one{
+    background-color: rgb(10, 101, 220);
+    border: none;
+}
