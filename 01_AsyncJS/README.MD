@@ -4,4 +4,5 @@
 - [Asynchronous Code](./AsyncJS/async2.js)
 
 - [PromisiFied setTimeout](./AsyncJS/async3.js)
-- [Promisified fireRead](./AsyncJS/async4.js)
+- [Promisified fileRead](./AsyncJS/async4.js)
+- [Promisified FetchFunction](./AsyncJS/async5.js)
