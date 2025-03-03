@@ -1,13 +1,11 @@
-const fs = require("fs");
-
-function promisifiedVersionOfFileRead(filPath, type) {
+//creating the promisified setTime out
+function setTimeoutPromisified(ms) {
   return new Promise(function (resolve) {
-    fs.readFile(filPath, type, function (err, data) {
-      resolve(data);
-    });
+    setTimeout(resolve, 5000);
   });
 }
 
-promisifiedVersionOfFileRead("m.txt", "utf-8").then((IGotData) => {
-  console.log(IGotData);
-});
+function callback() {
+  console.log("The SetTimeout is Called");
+}
+setTimeoutPromisified(3000).then(callback);
