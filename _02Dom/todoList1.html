@@ -6,6 +6,55 @@
     <title>todoList1</title>
   </head>
   <body>
-    <script></script>
+    <div class="root">
+      <div
+        class="todoApp"
+        style="display: flex; justify-content: center; gap: 5px"
+      >
+        <input type="text" placeholder="Add your Task" />
+        <button onclick="addTodo()">Add Task</button>
+      </div>
+      <div
+        class="todo-tasks"
+        style="
+          display: flex;
+          justify-content: center;
+          gap: 10px;
+          align-items: center;
+        "
+      ></div>
+    </div>
+    <script>
+      let currentIndex = 1;
+      function addTodo() {
+        const inputElement = document.querySelector("input");
+
+        const divTask = document.createElement("div");
+        divTask.setAttribute("id", currentIndex);
+
+        const h2 = document.createElement("h2");
+        h2.innerHTML = currentIndex + "." + inputElement.value;
+
+        const button = document.createElement("button");
+        button.innerHTML = "Delete";
+        button.setAttribute("onclick", `deleteTodo(${currentIndex})`);
+        button.setAttribute("id", currentIndex);
+
+        divTask.appendChild(h2);
+        divTask.appendChild(button);
+
+        divTask.style.border = "1px solid black";
+        divTask.style.padding = "10px";
+        divTask.style.margin = "5px";
+
+        document.querySelector(".todo-tasks").appendChild(divTask);
+        currentIndex++;
+        inputElement.value = "";
+      }
+      function deleteTodo(index) {
+        const elementToDelete = document.getElementById(index);
+        elementToDelete.remove();
+      }
+    </script>
   </body>
 </html>
