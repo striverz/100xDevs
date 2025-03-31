@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>todoList2</title>
+  </head>
+  <body>
+    <div class="root">
+      <div class="todoApp">
+        <input type="text" />
+        <button onclick="addTodo()">Add Task</button>
+      </div>
+      <div class="todo-tasks"></div>
+    </div>
+    <script>
+      let todos = [];
+      let currentIndex = 1;
+
+      function addTodo() {
+        const inputField = document.querySelector("input");
+        if (inputField.value.trim() === "") return;
+
+        todos.push({
+          id: currentIndex,
+          task: inputField.value,
+        });
+        inputField.value = "";
+        currentIndex++;
+        render();
+      }
+
+      function render() {
+        document.querySelector(".todo-tasks").innerHTML = "";
+        for (let i = 0; i < todos.length; i++) {
+          renderComponent(todos[i]);
+        }
+      }
+
+      function renderComponent(todo) {
+        const divTask = document.createElement("div");
+        divTask.setAttribute("id", "task-" + todo.id);
+
+        const h2 = document.createElement("h2");
+        h2.innerHTML = todo.task;
+        h2.setAttribute("id", "task-text-" + todo.id);
+
+        const button = document.createElement("button");
+        button.innerHTML = "Delete";
+        button.setAttribute("onclick", `deleteTodo(${todo.id})`);
+
+        const editBtn = document.createElement("button");
+        editBtn.innerHTML = "Edit";
+        editBtn.setAttribute("onclick", `editTodo(${todo.id})`);
+
+        divTask.appendChild(h2);
+        divTask.appendChild(button);
+        divTask.appendChild(editBtn);
+
+        document.querySelector(".todo-tasks").appendChild(divTask);
+      }
+
+      function deleteTodo(index) {
+        todos = todos.filter((task) => task.id != index);
+        render();
+      }
+
+      function editTodo(index) {
+        const elementToEdit = document.getElementById("task-" + index);
+        const taskToEdit = document.getElementById(
+          "task-text-" + index
+        ).innerHTML;
+
+        const editInput = document.createElement("input");
+        editInput.setAttribute("id", "editInput-" + index);
+        editInput.type = "text";
+        editInput.value = taskToEdit;
+
+        const editButton = document.createElement("button");
+        editButton.innerHTML = "Save";
+        editButton.setAttribute("onclick", `saveEdit(${index})`);
+
+        elementToEdit.innerHTML = "";
+        elementToEdit.appendChild(editInput);
+
+        elementToEdit.appendChild(editButton);
+      }
+
+      function saveEdit(index) {
+        const valueForSaving = document.getElementById(
+          "editInput-" + index
+        ).value;
+        console.log(valueForSaving);
+
+        for (let i = 0; i < todos.length; i++) {
+          if (todos[i].id == index) {
+            todos[i].task = valueForSaving;
+          }
+        }
+        render();
+      }
+    </script>
+  </body>
+</html>
