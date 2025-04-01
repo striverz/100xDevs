@@ -26,4 +26,26 @@ program
     });
   });
 
+program
+  .command("count_letters")
+  .description("Counts the total number of characters from a file")
+  .arguments("<file>", "File to read")
+  .action((file) => {
+    fs.readFile(file, "utf-8", (err, data) => {
+      if (err) {
+        console.log(err);
+      } else {
+        let fileData = data;
+        let countOfLetters = 0;
+        for (var c of fileData) {
+          if ((c >= "a" && c <= "z") || (c >= "A" && c <= "Z"))
+            countOfLetters++;
+        }
+        console.log(
+          `The total count of lettes in the file ${file} are ${countOfLetters}`
+        );
+      }
+    });
+  });
+
 program.parse();
