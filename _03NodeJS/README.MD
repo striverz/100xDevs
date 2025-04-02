@@ -1,17 +1,50 @@
-- What is NodeJS?
+## 📌 What is Node.js?
 
-  - Node.js is an open-source `JS runtime` that allows you to execute JavaScript code on the server side. It’s built on Chrome's V8 JavaScript engine.
-  - [GitHub Nodejs](https://github.com/nodejs/node)
+Node.js is an open-source **JavaScript runtime** that allows you to execute JavaScript code on the **server side**. It’s built on Chrome's **V8 JavaScript engine**, making it fast and efficient.
 
-- Assignment-1
+🔗 [GitHub Node.js](https://github.com/nodejs/node)
 
-  - Creating own Command Line Interface(CLI)
-  - [CLI for counting words in a file](app1.js)
-  - [CLI for checking number prime or not](app2.js)
-  - [CLI for Todo App](app3.js)
+---
 
-- Assignment-2
+## 📝 Assignment-1: CLI Projects
 
-  - [In memory To-Do App with crud operation of express server routing]
+Building CLI tools using Node.js to perform common tasks from the terminal.
 
-- Assignment-3
+### 🚀 CLI Applications:
+
+- **Word Counter CLI** - Counts words in a file.
+
+  ```sh
+  node app1.js count_words a.txt
+  ```
+
+  📂 [View Code](app1.js)
+
+- **Prime Number Checker CLI** - Checks if a number is prime.
+
+  ```sh
+  node app2.js isPrime 13
+  ```
+
+  📂 [View Code](app2.js)
+
+- **To-Do App CLI** - Manages tasks (add, remove, list).
+  ```sh
+  node app3.js addTodo "go to gym"
+  ```
+  📂 [View Code](app3.js)
+
+---
+
+## 📝 Assignment-2: Express To-Do App
+
+A simple **REST API** using **Express.js** for managing a to-do list in memory.
+
+### 🌟 Features:
+
+- Add new tasks
+- Retrieve all tasks
+- Update a task
+- Delete a task
+
+📂 [View Code](app4.js)
