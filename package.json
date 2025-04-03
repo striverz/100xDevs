@@ -1,0 +1,24 @@
+{
+  "name": "100xdevs",
+  "version": "1.0.0",
+  "description": "<p align=\"center\">\r   <img src=\"./_01AsyncJS/100xDevs.png\" alt=\"100xDevs Logo\">\r </p>",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/striverz/100xDevs.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/striverz/100xDevs/issues"
+  },
+  "homepage": "https://github.com/striverz/100xDevs#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0"
+  }
+}
