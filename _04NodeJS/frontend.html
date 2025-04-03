@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="root">
+      <input placeholder="first" id="one" />
+      <input placeholder="second" id="two" />
+      <button onClick="callBackend()">Click</button>
+    </div>
+    <script>
+      const a = document.querySelector("#one").value;
+      const b = document.querySelector("#two").value;
+      async function callBackend() {
+        const response = await axios.post("http://localhost:3333/add", {
+          a: a,
+          b: b,
+        });
+        console.log(response);
+      }
+    </script>
+  </body>
+</html>
