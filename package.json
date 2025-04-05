@@ -1,7 +1,6 @@
 {
   "name": "100xdevs",
   "version": "1.0.0",
-  "description": "<p align=\"center\">\r   <img src=\"./_01AsyncJS/100xDevs.png\" alt=\"100xDevs Logo\">\r </p>",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
