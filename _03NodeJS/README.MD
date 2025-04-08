@@ -18,7 +18,7 @@ Building CLI tools using Node.js to perform common tasks from the terminal.
   node app1.js count_words a.txt
   ```
 
-  📂 [View Code](app1.js)
+  📂 [View Code](NodeJS/app1.js)
 
 - **Prime Number Checker CLI** - Checks if a number is prime.
 
@@ -26,13 +26,13 @@ Building CLI tools using Node.js to perform common tasks from the terminal.
   node app2.js isPrime 13
   ```
 
-  📂 [View Code](app2.js)
+  📂 [View Code](NodeJS/app2.js)
 
 - **To-Do App CLI** - Manages tasks (add, remove, list).
   ```sh
   node app3.js addTodo "go to gym"
   ```
-  📂 [View Code](app3.js)
+  📂 [View Code](NodeJS/app3.js)
 
 ---
 
@@ -47,4 +47,4 @@ A simple **REST API** using **Express.js** for managing a to-do list in memory.
 - Update a task
 - Delete a task
 
-📂 [View Code](app4.js)
+📂 [View Code](NodeJS/app4.js)
