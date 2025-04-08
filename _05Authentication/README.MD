@@ -1,0 +1,2 @@
+- created a simple authentication(manual authentication with tokens)
+- created a authentication using the jwt
