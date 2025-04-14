@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import useTodoStore from "./todoStore";
 
 const Todo = () => {
-  const { addTodo, deleteTodo, filterEvenTodos } = useTodoStore();
+  const { addTodo, deleteTodo, filterEvenTodos, totalTodos } = useTodoStore();
   const todoData = useTodoStore((state) => state.todos);
+  const todoLength = useTodoStore((store) => store.count);
 
   const [todoTask, setTodoTask] = useState("");
   const [id, setId] = useState("");
@@ -15,7 +16,14 @@ const Todo = () => {
           value={todoTask}
           onChange={(e) => setTodoTask(e.target.value)}
         ></input>
-        <button onClick={() => addTodo(todoTask)}>Add Todo</button>
+        <button
+          onClick={() => {
+            addTodo(todoTask);
+            setTodoTask("");
+          }}
+        >
+          Add Todo
+        </button>
         <input
           value={id}
           onChange={(e) => {
@@ -26,6 +34,8 @@ const Todo = () => {
       </div>
       <div>
         <button onClick={filterEvenTodos}>Even Todos</button>
+        <button onClick={totalTodos}>Total Todos</button>
+        {todoLength && <h1>{todoLength}</h1>}
       </div>
 
       {/* Displaying the todoDetails */}

@@ -3,6 +3,7 @@ let currentId = 1;
 const todoStore = (set, get) => ({
   //state
   todos: [],
+  count: null,
 
   //actions or methods
   addTodo: function (todo) {
@@ -26,6 +27,13 @@ const todoStore = (set, get) => ({
     const evenTodos = get().todos.filter((todo) => todo.id % 2 == 0);
     set({ todos: evenTodos });
   },
+
+  totalTodos: function () {
+    const length = get().todos.length;
+    set({ count: length });
+  },
+
+  //   increaseCount: () => set((state) => ({ count: state.count + 1 })),
 });
 const useTodoStore = create(todoStore);
 export default useTodoStore;
