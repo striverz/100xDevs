@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>FrontEnd</title>
+  </head>
+  <body>
+    <div class="container">
+      <div>
+        <input type="text" placeholder="username" id="signup-username" />
+        <input type="text" placeholder="password" id="signup-password" />
+        <button onclick="signUpAPI()">SignUP</button>
+      </div>
+      <div>
+        <input type="text" placeholder="username" id="signin-username" />
+        <input type="text" placeholder="password" id="signin-password" />
+        <button onclick="signInAPI()">SignIn</button>
+      </div>
+      <div id="information">
+        <h3>User Information:</h3>
+      </div>
+      <div>
+        <button onclick="logout()">Logout</button>
+      </div>
+    </div>
+    <script>
+      async function signUpAPI() {
+        const username = document.getElementById("signup-username").value;
+        const password = document.getElementById("signup-password").value;
+        const response = await axios.post("http://localhost:3333/signup", {
+          username,
+          password,
+        });
+        console.log(response);
+      }
+
+      async function signInAPI() {
+        const username = document.getElementById("signin-username").value;
+        const password = document.getElementById("signin-password").value;
+
+        const response = await axios.post("http://localhost:3333/signin", {
+          username,
+          password,
+        });
+        let token = response?.data?.token;
+        localStorage.setItem("token", token);
+      }
+
+      async function getUserInformation() {
+        const response = await axios.get("http://localhost:3333/me", {
+          headers: {
+            token: localStorage.getItem("token"),
+          },
+        });
+        const infoDiv = document.getElementById("information");
+        const h4 = document.createElement("h4");
+        h4.innerHTML = response?.data?.user;
+        infoDiv.append(h4);
+
+        console.log(response?.data?.user);
+      }
+      getUserInformation();
+
+      async function logout() {
+        localStorage.removeItem("token");
+      }
+    </script>
+  </body>
+</html>
