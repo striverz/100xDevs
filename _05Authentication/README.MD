@@ -31,3 +31,12 @@
 ## 🌐 Explore JWT
 
 - [jwt.io - Official Website](https://jwt.io/)
+
+## 🔗 Assignment-Authentication with FE & BE
+
+### 🔄 Connecting FrontEnd, Backend and Cors
+
+> 📁 Code Files:
+>
+> - [`FrontEnd`](Authentication2/frontend/index.html)
+> - [`BackEnd`](Authentication2/backend/server.js)
