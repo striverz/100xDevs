@@ -82,8 +82,6 @@ app.post("/todo", authUser, async (req, res) => {
 });
 
 app.get("/todos", authUser, async (req, res) => {
-  console.log(req.userId);
-
   const todosData = await TodoModel.find({
     userId: req.userId,
   });
