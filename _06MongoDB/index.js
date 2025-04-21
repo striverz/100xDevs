@@ -60,6 +60,7 @@ async function authUser(req, res, next) {
   const id = isTokenValid.id;
   const user = await UserModel.findById(id);
   req.user = user;
+  req.userId = user.id;
 
   next();
 }
@@ -81,10 +82,12 @@ app.post("/todo", authUser, async (req, res) => {
 });
 
 app.get("/todos", authUser, async (req, res) => {
-  const userId = new mongoose.Types.ObjectId(req.user.id);
-  const todosData = await TodoModel.findById(userId);
+  console.log(req.userId);
 
-  res.send({
+  const todosData = await TodoModel.find({
+    userId: req.userId,
+  });
+  res.json({
     todos: todosData,
   });
 });

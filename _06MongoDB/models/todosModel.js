@@ -10,7 +10,7 @@ const todosSchema = new Schema({
     type: Boolean,
   },
   userId: {
-    type: ObjectId,
+    type: String,
   },
 });
 
