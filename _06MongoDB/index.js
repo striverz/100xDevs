@@ -3,6 +3,7 @@ const { connectDB } = require("./config/databaseConnection");
 const { UserModel } = require("./models/usersModel");
 const { TodoModel } = require("./models/todosModel");
 const mongoose = require("mongoose");
+const bcrypt = require("bcrypt");
 
 const jwt = require("jsonwebtoken");
 const app = express();
@@ -16,9 +17,11 @@ app.post("/signup", async (req, res) => {
   const password = req.body.password;
   const name = req.body.name;
 
+  const hashPassword = await bcrypt.hash(password, 5);
+
   await UserModel.create({
     email: email,
-    password: password,
+    password: hashPassword,
     name: name,
   });
 
@@ -33,10 +36,11 @@ app.post("/login", async (req, res) => {
 
   const user = await UserModel.findOne({
     email: email,
-    password: password,
   });
 
-  if (user) {
+  const isHashPasswordMatches = bcrypt.compare(password, user.password);
+
+  if (isHashPasswordMatches) {
     const token = jwt.sign(
       {
         id: user._id,
