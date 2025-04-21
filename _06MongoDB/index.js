@@ -2,6 +2,8 @@ const express = require("express");
 const { connectDB } = require("./config/databaseConnection");
 const { UserModel } = require("./models/usersModel");
 const { TodoModel } = require("./models/todosModel");
+const mongoose = require("mongoose");
+
 const jwt = require("jsonwebtoken");
 const app = express();
 const PORT = 3333;
@@ -51,21 +53,39 @@ app.post("/login", async (req, res) => {
 
 async function authUser(req, res, next) {
   const token = req.headers.token;
+  if (!token) res.status(401).send("The token is not valid!");
   const isTokenValid = jwt.verify(token, JWT_SECRET);
   if (!isTokenValid) return res.status(401).send("The Token is not valid!");
 
   const id = isTokenValid.id;
   const user = await UserModel.findById(id);
   req.user = user;
-  console.log(user);
 
   next();
 }
-app.post("/todo", (req, res) => {});
 
-app.get("/todos", authUser, (req, res) => {
+app.post("/todo", authUser, async (req, res) => {
+  const title = req.body.title;
+  const status = req.body.status;
+  const userId = req.body.userId;
+
+  await TodoModel.create({
+    title,
+    status,
+    userId,
+  });
+
   res.json({
-    name: req.user.name,
+    message: "The todo tasks added",
+  });
+});
+
+app.get("/todos", authUser, async (req, res) => {
+  const userId = new mongoose.Types.ObjectId(req.user.id);
+  const todosData = await TodoModel.findById(userId);
+
+  res.send({
+    todos: todosData,
   });
 });
 
