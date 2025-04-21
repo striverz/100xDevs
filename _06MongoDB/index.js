@@ -4,6 +4,7 @@ const { UserModel } = require("./models/usersModel");
 const { TodoModel } = require("./models/todosModel");
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
+const { z } = require("zod");
 
 const jwt = require("jsonwebtoken");
 const app = express();
@@ -13,9 +14,25 @@ const JWT_SECRET = "RRR";
 app.use(express.json());
 
 app.post("/signup", async (req, res) => {
+  //Input Validation using the Zod Library
+
+  const requiredBody = z.object({
+    email: z.string().min(3).max(100).email(),
+    password: z.string().min(3).max(100),
+    name: z.string().min(5).max(100),
+  });
+
+  const parsedDataWithSuccess = requiredBody.safeParse(req.body);
+
+  if (!parsedDataWithSuccess.success) {
+    res.json({
+      message: "Incorrect Credentials",
+      error: parsedDataWithSuccess.error,
+    });
+  }
   const email = req.body.email;
-  const password = req.body.password;
   const name = req.body.name;
+  const password = req.body.password;
 
   const hashPassword = await bcrypt.hash(password, 5);
 
