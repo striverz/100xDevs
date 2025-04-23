@@ -2,4 +2,6 @@
 
 - npm i -g typescript
 - npm init -y
-- npx tsc -y
+- npx tsc -init
+
+- Type Script with the examples
